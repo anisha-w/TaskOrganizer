@@ -1,0 +1,21 @@
+.btn-dark{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1e00ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.task-form{
+    display: flex;
+}
+.tasktext{
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
