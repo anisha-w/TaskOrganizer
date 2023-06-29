@@ -1,14 +1,17 @@
 <!--This component handles new task view-->
 <div class="task-form-container">
     <div class="tname-container">
-      <input 
-        type="text"
-        name="tname"
-        class="tasktext"
-        placeholder="to-do..."
-      />
+        <!-- Using ngModel for two way data binding -->
+        <input 
+            type="text"
+            [(ngModel)]="tname" 
+            name="tname"
+            class="tasktext"
+            placeholder="to-do..."
+        />
+
     </div>
     <div class="add-btn-container">
-        <button class="add-btn">Add Task</button>
+        <button class="add-btn" (click)="addNewComponent()">Add Task</button>
     </div>
 </div>

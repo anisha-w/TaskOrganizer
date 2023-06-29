@@ -1,4 +1,6 @@
 <p>task-list works!</p>
-<app-task-card id = "1"></app-task-card>
-<app-task-card id = "2"></app-task-card>
-<app-add-new-task></app-add-new-task>
+<ng-template #tasklistcontainer>
+
+</ng-template>
+<app-task-card></app-task-card>
+<app-add-new-task (taskDetailObj) = handleNewTask($event)></app-add-new-task>
