@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TaskDetail } from '../task-detail';
 
 @Component({
@@ -8,6 +8,7 @@ import { TaskDetail } from '../task-detail';
 })
 export class TaskCardComponent implements OnInit {
 
+  @Input() 
   taskDetailObj : TaskDetail = new TaskDetail();
   constructor() {
     this.taskDetailObj.tname = "Start project Task Organizer";
@@ -16,4 +17,7 @@ export class TaskCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toString(){
+    return this.taskDetailObj.tname;
+  }
 }

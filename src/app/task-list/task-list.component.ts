@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray, DragDropModule } from '@angular/cdk/drag-drop';
+
 import { TaskDetail } from '../task-detail';
 import { TaskCardComponent } from '../task-card/task-card.component';
 
@@ -9,20 +11,33 @@ import { TaskCardComponent } from '../task-card/task-card.component';
 })
 export class TaskListComponent implements OnInit {
 
-  @ViewChild('tasklistcontainer', {read: ViewContainerRef}) tasklistcontainerRef!: ViewContainerRef;
+  @ViewChild('taskcardcontainer', {read: ViewContainerRef}) taskcardcontainerRef!: ViewContainerRef;
 
-  taskCardArray : TaskCardComponent[] = [];
+  // taskCardArray : TaskCardComponent[] = [];
 
+  taskArray : TaskDetail[] = [];  //TaskDetail Objects array
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
   handleNewTask(taskObj : TaskDetail){
-    //alert(taskObj.tname);
-    const componentRef = this.tasklistcontainerRef.createComponent<TaskCardComponent>(TaskCardComponent);
-    componentRef.instance.taskDetailObj = taskObj;
-    this.taskCardArray.push(componentRef.instance); // keep track of the components 
+    
+    // //Dynamically create component
+    // const componentRef = this.taskcardcontainerRef.createComponent<TaskCardComponent>(TaskCardComponent);
+    // componentRef.instance.taskDetailObj = taskObj;
+    // this.taskCardArray.push(componentRef.instance); // keep track of the components 
+
+    //Keep track of TaskDetail object
+    this.taskArray.push(taskObj);
+    
   }
+
+  //drop(event: CdkDragDrop<TaskCardComponent[]>) { //when input array was TaskCardComponent[]
+  drop(event: CdkDragDrop<TaskDetail[]>) {
+    moveItemInArray(this.taskArray, event.previousIndex, event.currentIndex);
+  }
+
 
 }
