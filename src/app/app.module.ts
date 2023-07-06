@@ -11,6 +11,7 @@ import { AddNewTaskComponent } from './add-new-task/add-new-task.component';
 
 import { TaskDetail } from './task-detail';
 import { CalenderViewComponent } from './calender-view/calender-view.component';
+import { SharedService } from './shared.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CalenderViewComponent } from './calender-view/calender-view.component';
     FormsModule,
     DragDropModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

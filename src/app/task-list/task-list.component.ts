@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray, DragDropModule } from '@angular/cdk/drag-drop';
 
 import { TaskDetail } from '../task-detail';
-import { TaskCardComponent } from '../task-card/task-card.component';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-task-list',
@@ -17,7 +17,7 @@ export class TaskListComponent implements OnInit {
 
   taskArray : TaskDetail[] = [];  //TaskDetail Objects array
   
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
   }
@@ -36,7 +36,8 @@ export class TaskListComponent implements OnInit {
 
   //drop(event: CdkDragDrop<TaskCardComponent[]>) { //when input array was TaskCardComponent[]
   drop(event: CdkDragDrop<TaskDetail[]>) {
-    moveItemInArray(this.taskArray, event.previousIndex, event.currentIndex);
+    this.sharedService.drop(event);
+    // moveItemInArray(this.taskArray, event.previousIndex, event.currentIndex);
   }
 
 

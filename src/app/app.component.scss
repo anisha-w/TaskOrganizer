@@ -1,7 +1,16 @@
 .home-container{
     width: 100%;
+    
 }
 .task-list-view{
+    float : left;
     width:30%;
+    height: 100%;
+    border: 2px solid black;
+}
+.calender-view{
+    float: right;
+    width:60%;
+    max-height: 50%;
     border: 2px solid black;
 }

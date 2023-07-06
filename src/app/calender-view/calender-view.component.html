@@ -1,1 +1,5 @@
 <p>calender-view works!</p>
+<div #calenderviewdiv id="id2" class="calenderviewdiv" cdkDropList [cdkDropListConnectedTo]="'id1'" [cdkDropListData]="taskArray" (cdkDropListDropped)="drop($event)" >
+    <!-- <app-task-card cdkDrag [taskDetailObj]="defaultT"></app-task-card> -->
+    <app-task-card cdkDrag *ngFor="let t of taskArray" [taskDetailObj]="t"></app-task-card>
+</div>

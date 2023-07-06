@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { TaskDetail } from '../task-detail';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-calender-view',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalenderViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { 
+    this.defaultT.tname = "defaultTask";
+  }
 
   ngOnInit(): void {
   }
+
+  taskArray : TaskDetail[] = [];  //TaskDetail Objects array
+  defaultT: TaskDetail = new TaskDetail;
+
+  drop(event: CdkDragDrop<TaskDetail[]>) {
+    this.sharedService.drop(event);
+  }
+  
 
 }

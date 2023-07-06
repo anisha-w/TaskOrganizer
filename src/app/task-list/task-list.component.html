@@ -1,5 +1,5 @@
 <p>task-list works!</p>
-<div cdkDropList (cdkDropListDropped)="drop($event)" #tasklistdiv>
+<div #tasklistdiv id="id1" class="tasklistdiv" cdkDropList [cdkDropListConnectedTo]="'id2'" (cdkDropListDropped)="drop($event)" [cdkDropListData]="taskArray">
     <!-- <ng-template #taskcardcontainer></ng-template> -->
     <app-task-card cdkDrag *ngFor="let t of taskArray" [taskDetailObj]="t"></app-task-card>
 </div>
