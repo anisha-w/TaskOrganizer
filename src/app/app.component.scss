@@ -1,16 +1,26 @@
-.home-container{
-    width: 100%;
+
+// .home-container{
+//     width: 100%;
+//     height: 100%;
+   
+//     // height: 100vh;
     
-}
+// }
 .task-list-view{
     float : left;
-    width:30%;
+    width : 30%;
     height: 100%;
-    border: 2px solid black;
+    border-radius: 12px;
+    background-color: #bfbfbf5f;
+    padding: 10px;
+    // border: 2px solid black;
 }
 .calender-view{
     float: right;
-    width:60%;
-    max-height: 50%;
-    border: 2px solid black;
+    width:69%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: #bfbfbf5f;
+    padding: 10px;
+    // border: 2px solid black;
 }

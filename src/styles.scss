@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    // background-color: #E4F0FF;
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 12px;
+    grid-template-areas:
+    "header"
+    "content"
+    "footer";
+    height: 100vh;
+}
+app-header {
+    color: white;
+    font-size: 14px;
+    grid-area: header;
+    text-align: center;
+    background-color: #a5282898;
+}
+app-footer {
+    grid-area: footer;
+    background-color:#2ca159c2;
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+}
+.home-container{
+    grid-area: content;
+}
+* {
+    box-sizing: border-box;
+  }

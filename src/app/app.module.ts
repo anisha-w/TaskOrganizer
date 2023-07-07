@@ -12,6 +12,8 @@ import { AddNewTaskComponent } from './add-new-task/add-new-task.component';
 import { TaskDetail } from './task-detail';
 import { CalenderViewComponent } from './calender-view/calender-view.component';
 import { SharedService } from './shared.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { SharedService } from './shared.service';
     TaskListComponent,
     TaskCardComponent,
     AddNewTaskComponent,
-    CalenderViewComponent
+    CalenderViewComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,13 @@
-<p>task-list works!</p>
-<div #tasklistdiv id="id1" class="tasklistdiv" cdkDropList [cdkDropListConnectedTo]="'id2'" (cdkDropListDropped)="drop($event)" [cdkDropListData]="taskArray">
-    <!-- <ng-template #taskcardcontainer></ng-template> -->
-    <app-task-card cdkDrag *ngFor="let t of taskArray" [taskDetailObj]="t"></app-task-card>
+<!-- <p>task-list works!</p> -->
+<div class="task-list-container">
+    <div #tasklistdiv id="id1" class="tasklistdiv" cdkDropList [cdkDropListConnectedTo]="'id2'" (cdkDropListDropped)="drop($event)" [cdkDropListData]="taskArray">
+        <!-- <ng-template #taskcardcontainer></ng-template> -->
+        <app-task-card cdkDrag *ngFor="let t of taskArray" [taskDetailObj]="t"></app-task-card>
+    </div>
+    <div class="addtaskdiv">
+        <app-add-new-task (taskDetailObj) = handleNewTask($event)></app-add-new-task>
+    </div>
 </div>
-<app-add-new-task (taskDetailObj) = handleNewTask($event)></app-add-new-task>
 
     
 
