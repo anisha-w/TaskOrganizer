@@ -1,5 +1,4 @@
-
-.container {
+.custom-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
@@ -9,18 +8,20 @@
     "content"
     "footer";
     height: 100vh;
+    margin: 0px;
+    padding: 0px;
 }
 app-header {
-    //color: white;
-    font-size: 14px;
+    color: white;
     grid-area: header;
-    text-align: center;
-    //background-color: #a5282898;
+    padding: 12px;
+    background-color: #a5282898;
+    // background-color: $primary-120;
 }
 app-footer {
     grid-area: footer;
-    //background-color:#2ca159c2;
-    //color: white;
+    background-color:#2ca159c2;
+    color: white;
     text-align: center;
     padding: 25px 0;
 }
