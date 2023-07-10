@@ -1,12 +1,14 @@
+@use 'globals' as *;
+
 .custom-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
-    grid-gap: 12px;
+    // grid-gap: 12px;
     grid-template-areas:
     "header"
-    "content"
-    "footer";
+    "content";
+    //"footer";
     height: 100vh;
     margin: 0px;
     padding: 0px;
@@ -15,38 +17,33 @@ app-header {
     color: white;
     grid-area: header;
     padding: 12px;
-    background-color: #a5282898;
-    // background-color: $primary-120;
+    background-color: $primary-100;
 }
-app-footer {
-    grid-area: footer;
-    background-color:#2ca159c2;
-    color: white;
-    text-align: center;
-    padding: 25px 0;
-}
+// app-footer {
+//     grid-area: footer;
+//     background-color:#2ca159c2;
+//     color: white;
+//     text-align: center;
+//     padding: 25px 0;
+// }
 .home-container{
     grid-area: content;
 }
-* {
-    box-sizing: border-box;
-  }
-
 .task-list-view{
     float : left;
     width : 30%;
     height: 100%;
-    border-radius: 12px;
-    background-color: #bfbfbf5f;
+    background-color: $secondary-100;
     padding: 10px;
-    // border: 2px solid black;
+   
 }
 .calender-view{
     float: right;
-    width:69%;
+    width:70%;
     height: 100%;
-    border-radius: 12px;
-    background-color: #bfbfbf5f;
+    background-color: $background-white;
     padding: 10px;
-    // border: 2px solid black;
 }
+* {
+    box-sizing: border-box;
+  }
