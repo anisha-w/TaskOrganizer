@@ -14,6 +14,7 @@ import { CalenderViewComponent } from './calender-view/calender-view.component';
 import { SharedService } from './shared.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    NgbModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

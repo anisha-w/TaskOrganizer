@@ -1,9 +1,36 @@
+/* Importing Bootstrap SCSS file. */
+@use 'bootstrap/scss/bootstrap';
+
 /* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    // width : 100%;
+    // @extend .w-100;
     // background-color: #E4F0FF;
 }
 
+html, body { 
+    height: 100%; 
+    // @extend .w-100; 
+}
+
+
+$Abstract-color-pastel-background: #F2D5DD;
+$Abstract-color-pastel-background: #F2ACC6;
+$Abstract-color-pastel-background: #E8C4F2;
+$Abstract-color-pastel-background: #E8D0F2;
+$Abstract-color-pastel-background: #C2F2F2;
+
+$color-neutral :#F3F2F1;
+$c2 :#9C8EC1;
+$primary-100 :#CD3E8F;
+$c4 :#7243A1;
+$c5 :#223882;
+
+$c6 :#F6F3F4;
+$c7 :#8891D4;
+
+$primary-120 : #a31a6c;
 
