@@ -1,0 +1,21 @@
+.header-container{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+}
+.heading{
+    float:left;
+    height: 100%;
+    vertical-align: middle;
+    h1{
+        // padding: 0px;
+        margin:0px;
+        width:auto;
+        height: 100%;
+        vertical-align: middle;
+        
+    }
+}
+.menubar{
+    float: right;
+}
