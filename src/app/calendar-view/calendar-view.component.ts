@@ -4,11 +4,11 @@ import { TaskDetail } from '../task-detail';
 import { SharedService } from '../shared.service';
 
 @Component({
-  selector: 'app-calender-view',
-  templateUrl: './calender-view.component.html',
-  styleUrls: ['./calender-view.component.scss']
+  selector: 'app-calendar-view',
+  templateUrl: './calendar-view.component.html',
+  styleUrls: ['./calendar-view.component.scss']
 })
-export class CalenderViewComponent implements OnInit {
+export class CalendarViewComponent implements OnInit {
 
   constructor(private sharedService: SharedService) { 
     this.defaultT.tname = "defaultTask";

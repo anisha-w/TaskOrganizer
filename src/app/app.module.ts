@@ -10,11 +10,14 @@ import { TaskCardComponent } from './task-card/task-card.component';
 import { AddNewTaskComponent } from './add-new-task/add-new-task.component';
 
 import { TaskDetail } from './task-detail';
-import { CalenderViewComponent } from './calender-view/calender-view.component';
+import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import { SharedService } from './shared.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarViewHeaderComponent } from './calendar-view-header/calendar-view-header.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -22,16 +25,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TaskListComponent,
     TaskCardComponent,
     AddNewTaskComponent,
-    CalenderViewComponent,
+    CalendarViewComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CalendarViewHeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     DragDropModule,
-    NgbModule
+    NgbModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
