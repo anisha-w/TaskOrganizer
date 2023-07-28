@@ -50,7 +50,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     FontAwesomeModule
   ],
-  providers: [SharedService],
+  providers: [SharedService], //service available globally 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
