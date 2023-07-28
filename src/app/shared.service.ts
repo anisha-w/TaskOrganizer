@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskDetail } from './task-detail';
+import { Subject } from 'rxjs';
+import { CalendarEvent } from 'calendar-utils';
 
 
 @Injectable({
@@ -8,17 +9,31 @@ import { TaskDetail } from './task-detail';
 })
 export class SharedService {
 
+  private taskListSource = new Subject<TaskDetail>();
+  public taskListSource$ = this.taskListSource.asObservable();
+
+  private calendarTaskSource = new Subject<CalendarEvent>();
+  public calendarTaskSource$ = this.calendarTaskSource.asObservable();
+
   constructor() { }
 
-  public drop(event: CdkDragDrop<TaskDetail[]>) {
-    // alert(event.previousContainer.id + " "+ event.container.id);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    }
+  updateTaskArray(value: any) {
+    this.taskListSource.next(value);
   }
+
+  updateCalendarArray(value: any) {
+    this.calendarTaskSource.next(value);
+  }
+
+  // public drop(event: CdkDragDrop<TaskDetail[]>) {
+  //   // alert(event.previousContainer.id + " "+ event.container.id);
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     transferArrayItem(event.previousContainer.data,
+  //       event.container.data,
+  //       event.previousIndex,
+  //       event.currentIndex);
+  //   }
+  // }
 }

@@ -3,9 +3,8 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TaskDetail } from '../task-detail';
 import { SharedService } from '../shared.service';
 
-import { startOfDay, endOfDay, subDays, addDays, endOfMonth,
-  isSameDay, isSameMonth, addHours } from 'date-fns';
-import { Subject } from 'rxjs';
+import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
+import { Subject, Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 
@@ -61,12 +60,12 @@ export class CalendarViewComponent implements OnInit {
       a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }): void => {
         this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
+        //this.handleEvent('Deleted', event);
       },
     },
   ];
 
-  refresh = new Subject<void>();
+  refresh = new Subject<void>(); //Anisha
 
   events: CalendarEvent[] = [
     {
@@ -111,19 +110,21 @@ export class CalendarViewComponent implements OnInit {
 
   activeDayIsOpen: boolean = true;
 
+  calendarTaskSourceSub$: Subscription = new Subscription;
+  
   constructor(private sharedService: SharedService, private modal: NgbModal) { 
     this.defaultT.tname = "defaultTask";
   }
 
   ngOnInit(): void {
+    this.calendarTaskSourceSub$ = this.sharedService.calendarTaskSource$.subscribe(
+      (x: CalendarEvent) => (this.events = this.events.filter((iEvent) => iEvent!== x)) // JSON.stringify(iEvent) !== JSON.stringify(x) 
+    );
   }
 
   taskArray : TaskDetail[] = [];  //TaskDetail Objects array
   defaultT: TaskDetail = new TaskDetail;
 
-  drop(event: CdkDragDrop<TaskDetail[]>) {
-    this.sharedService.drop(event);
-  }
   
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -139,27 +140,33 @@ export class CalendarViewComponent implements OnInit {
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
-    this.handleEvent('Dropped or resized', event);
+  eventTimesChanged({ event, newStart, newEnd,}: CalendarEventTimesChangedEvent): void {
+    //const task = new TaskDetail(event);
+    const task =event;
+    debugger;
+    if(!this.events.includes(task)){
+      task.start = newStart;
+      task.end = newEnd;
+      this.events = [...this.events , task ];
+      this.sharedService.updateTaskArray(task);
+    }
+    else{
+     
+      this.events = this.events.map((iEvent) => {
+          if (iEvent === task) {
+            iEvent.start = newStart;
+            iEvent.end = newEnd;
+          }
+          return iEvent;
+        });
+    }
+    //this.handleEvent('Dropped or resized', event);
+
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modal.open(this.modalContent, { size: 'lg' }); //ANISHA
   }
 
   addEvent(): void {

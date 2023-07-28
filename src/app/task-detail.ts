@@ -33,15 +33,35 @@ export class TaskDetail implements CalendarEvent {
 
     desc?: string; // Optional property
 
-    constructor() {
-        this.tname = "";
-        this.title = this.tname; 
-        this.start = new Date(); 
+    constructor(calendarEvent? : CalendarEvent) {
+
+        if(calendarEvent!=undefined){
+            this.id = calendarEvent?.id;
+            this.start = calendarEvent?.start;
+            this.end = calendarEvent?.end;
+            this.title = this.tname; 
+            this.color =   calendarEvent?.color;
+            this.actions = calendarEvent?.actions;
+            this.allDay = calendarEvent?.allDay;
+            this.cssClass = calendarEvent?.cssClass;
+            this.resizable = calendarEvent?.resizable;
+            this.draggable = calendarEvent?.draggable;
+            
+            this.tname = calendarEvent.title;
+            
+        }
+        else{
+            this.tname = "";
+            this.title = this.tname; 
+            this.start = new Date(); 
+            this.draggable = true;
+        }
     }
 
     // sync value of title and tname without renaming variables in entire code
     private syncTitle() {
         this.title = this.tname;
     }
+
 
 }

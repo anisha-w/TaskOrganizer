@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray, DragDropModule } from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { TaskDetail } from '../task-detail';
 import { SharedService } from '../shared.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-list',
@@ -11,15 +12,19 @@ import { SharedService } from '../shared.service';
 })
 export class TaskListComponent implements OnInit {
 
-  @ViewChild('taskcardcontainer', {read: ViewContainerRef}) taskcardcontainerRef!: ViewContainerRef;
+  //@ViewChild('taskcardcontainer', {read: ViewContainerRef}) taskcardcontainerRef!: ViewContainerRef; //object reference for creating new component
 
   // taskCardArray : TaskCardComponent[] = [];
 
   taskArray : TaskDetail[] = [];  //TaskDetail Objects array
-  
-  constructor(private sharedService: SharedService) { }
+  taskListSourceSub$: Subscription = new Subscription;
+
+  constructor(private sharedService: SharedService) { } //injecting service into component
 
   ngOnInit(): void {
+    this.taskListSourceSub$ = this.sharedService.taskListSource$.subscribe(
+      (x: TaskDetail) => (this.taskArray = this.taskArray.filter((iEvent) => iEvent !== x))
+    );
   }
 
   handleNewTask(taskObj : TaskDetail){
@@ -34,11 +39,17 @@ export class TaskListComponent implements OnInit {
     
   }
 
-  //drop(event: CdkDragDrop<TaskCardComponent[]>) { //when input array was TaskCardComponent[]
+  // drop(event: CdkDragDrop<TaskCardComponent[]>) { //when input array was TaskCardComponent[]
   drop(event: CdkDragDrop<TaskDetail[]>) {
-    this.sharedService.drop(event);
-    // moveItemInArray(this.taskArray, event.previousIndex, event.currentIndex);
+    //this.sharedService.drop(event);
+    moveItemInArray(this.taskArray, event.previousIndex, event.currentIndex);
   }
 
-
+  externalDrop(eventObj: any) {
+    eventObj.event.tname = eventObj.event.title;
+    if (this.taskArray.indexOf(eventObj.event) === -1) {
+      this.taskArray.push(eventObj.event);
+    }
+    this.sharedService.updateCalendarArray(eventObj.event);
+  }
 }
