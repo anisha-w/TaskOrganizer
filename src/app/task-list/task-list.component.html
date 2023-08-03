@@ -2,11 +2,11 @@
 <div class="task-list-container">
     <div #tasklistdiv id="id1" class="tasklistdiv"  mwlDroppable cdkDropList (drop)="externalDrop($event.dropData)" (cdkDropListDropped)="drop($event)"> <!--(event_triggered)="function_called(object_emitted_by_the_event)" -->
         <!-- <ng-template #taskcardcontainer></ng-template> -->
-        <app-task-card cdkDrag mwlDraggable [dropData]="{event: t, eventContainer:'tasklist'}" *ngFor="let t of taskArray" [taskDetailObj]="t"></app-task-card>
+        <app-task-card cdkDrag mwlDraggable [dropData]="{event: t, eventContainer:'tasklist'}" *ngFor="let t of taskArray" [taskDetailObj]="t" (deleteTaskDetailObj) = "handleEvent($event)"></app-task-card>
         <!--dropData is a property for which we are setting the event as t-->
     </div>
     <div class="addtaskdiv">
-        <app-add-new-task (taskDetailObj) = handleNewTask($event)></app-add-new-task>
+        <app-add-new-task (taskDetailEmit) = handleNewTask($event)></app-add-new-task> <!-- when child comp app-add-new-task emits the event taskDetailEmit, the function handleNewTask is called and the emitted object ($event : currTask) is passed to this function -->
     </div>
 </div>
 

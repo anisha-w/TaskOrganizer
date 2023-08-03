@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { TaskDetail } from '../task-detail';
@@ -14,10 +14,10 @@ export class TaskListComponent implements OnInit {
 
   //@ViewChild('taskcardcontainer', {read: ViewContainerRef}) taskcardcontainerRef!: ViewContainerRef; //object reference for creating new component
 
-  // taskCardArray : TaskCardComponent[] = [];
-
   taskArray : TaskDetail[] = [];  //TaskDetail Objects array
   taskListSourceSub$: Subscription = new Subscription;
+
+  @Input() deleteTaskDetailObj : TaskDetail = new TaskDetail();
 
   constructor(private sharedService: SharedService) { } //injecting service into component
 
@@ -51,5 +51,9 @@ export class TaskListComponent implements OnInit {
       this.taskArray.push(eventObj.event);
     }
     this.sharedService.updateCalendarArray(eventObj.event);
+  }
+
+  handleEvent(taskObj : TaskDetail){
+    this.taskArray = this.taskArray.filter((iEvent) => iEvent !== taskObj);
   }
 }

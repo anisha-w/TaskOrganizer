@@ -5,7 +5,11 @@
 <!-- </div> -->
 
 <div class="card task-container">
-    <div class="card-body">
-        {{ taskDetailObj.tname }}
+    <div class="card-body task-details">
+        <h6 class="card-title">{{ taskDetailObj.tname }}</h6>
+        <p class="card-text" *ngIf="taskDetailObj.desc && taskDetailObj.desc.length > 0" >{{ taskDetailObj.desc }}</p>
     </div>
-  </div>
+    <div class="card-actions">
+        <mwl-calendar-event-actions [event] = "taskDetailObj"></mwl-calendar-event-actions>
+    </div>
+</div>

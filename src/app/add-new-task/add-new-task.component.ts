@@ -10,7 +10,7 @@ export class AddNewTaskComponent implements OnInit {
 
   tname : any;
   currTask : TaskDetail;
-  @Output() taskDetailObj: EventEmitter<TaskDetail> = new EventEmitter<TaskDetail>(); //create a event called taskDetailObj; this is the name of the event that can be triggered
+  @Output() taskDetailEmit: EventEmitter<TaskDetail> = new EventEmitter<TaskDetail>(); //create a event called taskDetailEmit; this is the name of the event that can be triggered
 
   constructor(){
     this.currTask = new TaskDetail();
@@ -21,7 +21,7 @@ export class AddNewTaskComponent implements OnInit {
 
   addNewComponent() {
     this.currTask.tname = this.tname;
-    this.taskDetailObj.emit(this.currTask); //This is where the event gets triggered; event name : taskDetailObj ; emit object/$event : currTask when triggered
+    this.taskDetailEmit.emit(this.currTask); //This is where the event gets triggered; event name : taskDetailObj ; emit object/$event : currTask when triggered
     //reset field 
     this.tname = '';
     this.currTask = new TaskDetail();
