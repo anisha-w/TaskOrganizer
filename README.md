@@ -1,28 +1,36 @@
 
 # TaskOrganizerApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
+## Description
+A drag-and-drop task organizer with calendar integration, offering multiple views (month, week, day) and the ability to easily add, assign, or delete tasks.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+* Add new tasks
+* Re-arrange tasks in the list
+* Drag and drop tasks from the list to the calendar and back
+* Delete Tasks
 
-## Code scaffolding
+#### Snapshots of GUI
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<!--#### Demo Video-->
+    
+<!--## Project Design Plan / Project Milestones-->
 
-## Build
+## Installation and Execution
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Installing and downloading dependencies
+Download the project files and run the following command
+```sh
+npm install
+```
 
-## Running unit tests
+#### Execution on Development server
+To start the server and run your angular app, execute the following command
+```sh
+ng serve --open //will compile and serve the Angular app locally; will automatically reload the app when source files change.
+                // --open will automatically open the web browser to display the Angular app (http://localhost:4200/)
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+##### Web browser link for locally deployed app
+http://localhost:4200/
