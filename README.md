@@ -12,6 +12,8 @@ A drag-and-drop task organizer with calendar integration, offering multiple view
 * Delete Tasks
 
 #### Snapshots of GUI
+<img width="1440" alt="image" src="https://github.com/anisha-w/TaskOrganizer/assets/36306448/aa4bd0c7-25d6-409f-b174-5d9564945dc2">
+
 
 <!--#### Demo Video-->
     
