@@ -12,7 +12,10 @@ export class TaskDetail implements CalendarEvent {
     start: Date;
     end?: Date | undefined;
     title: string;
-    color?: EventColor | undefined;
+    color?: EventColor = {
+        primary: '#ad2121',
+        secondary: '#FAE3E3',
+    };
     actions?: EventAction[] | undefined;
     allDay?: boolean | undefined;
     cssClass?: string | undefined;
