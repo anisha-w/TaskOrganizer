@@ -1,0 +1,18 @@
+@use 'globals' as *;
+
+.cal-head-containter{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    // grid-gap: 12px;
+    grid-template-areas:
+    "prev_next_btn" "currentMonth" "m_w_d_btn";
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+}
+.col-md-4{
+    h3{
+        vertical-align: middle;
+    }
+    
+}

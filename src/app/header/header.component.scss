@@ -1,3 +1,4 @@
+@use 'globals' as *;
 .header-container{
     display: inline-block;
     vertical-align: middle;
@@ -18,4 +19,10 @@
 }
 .menubar{
     float: right;
+}
+.nav-link{
+    color: $text-light;
+}
+.nav-link:hover{
+    color: $text-hover;
 }

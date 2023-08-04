@@ -1,6 +1,6 @@
 <!-- <p>calendar-view-header works!</p> -->
-<div class="row text-center">
-    <div class="col-md-4">
+<div class="row text-center cal-head-containter">
+    <div #prev_next_btn class="col-md-4">
       <div class="btn-group">
         <div
           class="btn btn-primary"
@@ -30,10 +30,10 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <h3>{{ viewDate | calendarDate: view + 'ViewTitle':locale }}</h3>
+    <div #currentMonth class="col-md-4">
+      <h3 class="m-0">{{ viewDate | calendarDate: view + 'ViewTitle':locale }}</h3>
     </div>
-    <div class="col-md-4">
+    <div #m_w_d_btn class="col-md-4">
       <div class="btn-group">
         <div
           class="btn btn-primary"

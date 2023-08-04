@@ -1,6 +1,5 @@
 
-// All colour variables
-
+// overriding colour variables from _variables.scss in bootstrap
 
 // $Abstract-color-pastel-background: #F2D5DD;
 // $Abstract-color-pastel-background: #F2ACC6;
@@ -34,4 +33,15 @@ $background-pastal: #f2ede0;
 $background-white: #e1e1e1; 
 // $background-white-03: #bfbfbf5f; //0.3 opacity 
 $link-color : white;
+$text-light : white;
+$text-dark : black;
+$text-hover : #c2e1d7;
+
+$label-default : #8A3324; 
+$label1 : #A8D5B7;
+$label2 : #8A3324;
+$label3 : #DAA520;
+$label4 : #003333;
+
+
 @import 'bootstrap';
