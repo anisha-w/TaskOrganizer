@@ -18,3 +18,27 @@ html, body {
     height: 100%; 
     // @extend .w-100; 
 }
+
+// Modifying Calendar style : Original : node_modules/angular-calendar/css/angular-calendar.css
+.cal-month-view .cal-open-day-events{
+    background-color: $primary-100;
+}
+
+.cal-cell-top{
+    min-height: 50px;
+}
+
+// Call the calendar mixin with a sass color map of your theme. Every property is optional.
+// For a list of all variables and how they are used,
+// see https://github.com/mattlewis92/angular-calendar/tree/main/projects/angular-calendar/src/variables.scss
+// @mixin cal-theme{
+//     //   bg-primary: $bg-dark-primary,
+//     //   bg-secondary: $bg-dark-secondary,
+//     //   weekend-color: indianred,
+//     //   bg-active: $bg-active,
+//     //   border-color: $border-color,
+//     gray: rgb(21, 57, 47,0.15),
+//     //today-bg: $bg-dark-secondary,
+//     //event-color-primary: $bg-dark-secondary,
+// };
+  
