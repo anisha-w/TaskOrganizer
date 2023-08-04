@@ -14,6 +14,7 @@
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
+    [cellTemplate]="customMonthCell"
   >
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
@@ -60,4 +61,36 @@
       OK
     </button>
   </div>
+</ng-template>
+
+
+<!-- Custom view for the day cells in a Month view -->
+<ng-template #customMonthCell let-day="day" let-locale="locale" let-trackByEventId="trackByEventId">
+  <div class="cal-cell-top">
+    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0" >{{ day.badgeTotal }}</span>
+    <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <div
+          *ngFor="let event of day.events; trackBy: trackByEventId"
+          [ngClass]="event?.cssClass"
+          mwlDraggable
+          [class.cal-draggable]="event.draggable"
+          dragActiveClass="cal-drag-active"
+          [dropData]="{ event: event }"
+          [touchStartLongPress]="{ delay: 300, delta: 30 }"
+          
+        >
+        <!--           [dragAxis]="{ x: event.draggable, y: event.draggable }"
+          [validateDrag]="validateDrag" -->
+          <span
+            class="cal-event"
+            [ngStyle]="{ backgroundColor: event.color?.primary }"
+          >
+          </span>
+          &ngsp;
+          <span>
+            {{ event.title}}
+          </span>
+  </div>
+  
 </ng-template>
