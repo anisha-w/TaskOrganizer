@@ -1,5 +1,6 @@
 import { CalendarEvent } from 'angular-calendar';
 import { EventColor, EventAction } from 'calendar-utils';
+import { COLOR_LIST } from './constants';
 
 // export interface TaskDetail extends CalendarEvent {
 //     //tname: string; //replaced by title from extending interface
@@ -12,10 +13,7 @@ export class TaskDetail implements CalendarEvent {
     start: Date;
     end?: Date | undefined;
     title: string;
-    color?: EventColor = {
-        primary: '#ad2121',
-        secondary: '#FAE3E3',
-    };
+    color?: EventColor = COLOR_LIST.at(0)?.value; 
     actions?: EventAction[] | undefined;
     allDay?: boolean | undefined;
     cssClass?: string | undefined;
@@ -48,8 +46,7 @@ export class TaskDetail implements CalendarEvent {
             this.allDay = calendarEvent?.allDay;
             this.cssClass = calendarEvent?.cssClass;
             this.resizable = calendarEvent?.resizable;
-            this.draggable = calendarEvent?.draggable;
-            
+
             this.tname = calendarEvent.title;
             
         }
@@ -57,7 +54,11 @@ export class TaskDetail implements CalendarEvent {
             this.tname = "";
             this.title = this.tname; 
             this.start = new Date(); 
-            this.draggable = true;
+        }
+        this.draggable = true;
+        this.resizable = {
+            beforeStart: true,
+            afterEnd: true,
         }
     }
 
