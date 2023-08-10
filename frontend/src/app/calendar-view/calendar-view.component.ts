@@ -68,19 +68,19 @@ export class CalendarViewComponent implements OnInit {
   refresh = new Subject<void>(); //Anisha
 
   events: CalendarEvent[] = [
-    // {
-    //   start: subDays(startOfDay(new Date()), 1),
-    //   end: addDays(new Date(), 1),
-    //   title: 'A 3 day event',
-    //   color: { ...colors.red},
-    //   actions: this.actions,
-    //   allDay: true,
-    //   resizable: {
-    //     beforeStart: true,
-    //     afterEnd: true,
-    //   },
-    //   draggable: true,
-    // },
+    {
+      start: subDays(startOfDay(new Date()), 1),
+      end: addDays(new Date(), 1),
+      title: 'A 3 day event',
+      color: { ...colors.red},
+      actions: this.actions,
+      allDay: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
     // {
     //   start: startOfDay(new Date()),
     //   title: 'An event with no end date',
@@ -143,7 +143,6 @@ export class CalendarViewComponent implements OnInit {
   eventTimesChanged({ event, newStart, newEnd,}: CalendarEventTimesChangedEvent): void {
     //const task = new TaskDetail(event);
     const task =event;
-    debugger;
     if(!this.events.includes(task)){
       task.start = newStart;
       task.end = newEnd;
