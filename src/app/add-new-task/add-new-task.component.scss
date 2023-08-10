@@ -9,22 +9,56 @@
 .tname-container{
     flex-grow: 1;
     padding: 0 5% 0 0;
-
-    
 }
 .add-btn-container{
     padding: 0;
 }
+.input-group{
+    width:auto;
+}
+.col-btn{
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow:0 0.5rem 1rem $primary-100;
+    z-index: 9;
+    height: 100%;
+}
+.col-btn:hover{
+    box-shadow: none;
+}
+#dropdown-color::after{ //remove icon
+    display: none!important;
+}
+.dropdown-menu.show{
+    display: flex; //remove if you want vertical menu and not horizontal
+}
+.col-menu{
+    flex-direction: row; //remove if you want vertical menu and not horizontal
+    min-width: 40px;
+    padding: 0;
+    overflow: hidden;
+}
+.col-option{
+    height: 20px;
+}
 .tasktext{
     box-sizing: border-box;
     height: auto;
-    width: 100%;
+    width: 50%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    // border-radius: 4px;
     font-size: 14px;
     background-color: $background-white;
     box-shadow:0 0.5rem 1rem $primary-100;
+    z-index: 10;
+}
+.tasktext:focus{
+    //border: 0.5px solid #ccc;
+    box-shadow: none;
 }
 .add-btn{
     box-sizing: border-box;
@@ -44,4 +78,6 @@
 *{
     box-sizing: border-box;
 }
+
+
 

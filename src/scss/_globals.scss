@@ -25,23 +25,24 @@
 $primary: #15392f;
 $secondary: #527c70;
 
-$primary-100: #15392f;
+$primary-100: $primary;
 $primary-100-s15: rgb(21, 57, 47,0.15); //0.15 opacity for shadow
-$secondary-100: #527c70;
-$background-primary : #c2e1d7;
+$secondary-100: $secondary;
+$background-primary : #e1e1e1;
+//$background-primary : #c2e1d7;
 $background-pastal: #f2ede0;
 $background-white: #e1e1e1; 
 // $background-white-03: #bfbfbf5f; //0.3 opacity 
 $link-color : white;
 $text-light : white;
 $text-dark : black;
-$text-hover : #c2e1d7;
+$text-hover : $background-primary ;
 
-$label-default : #8A3324; 
-$label1 : #A8D5B7;
-$label2 : #8A3324;
-$label3 : #DAA520;
-$label4 : #003333;
+$label-default : #8a3324; 
+$label1: $label-default;
+$label2 : #da9c01;
+$label3 : #04dfdb;
+$label4 : #0A2C8A;
 
 
 @import 'bootstrap';

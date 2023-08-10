@@ -1,12 +1,22 @@
 <!--This component handles new task view-->
 <div class="task-form-container">
-    <div class="tname-container">
+    <div class="tname-container input-group">
+        <div ngbDropdown placement="top-start" class="d-inline-block">
+			<button type="button" class="col-btn btn btn-primary" id="dropdown-color" ngbDropdownToggle [style.backgroundColor]="currLabelColor"></button>
+			<div ngbDropdownMenu class="col-menu">
+				<button ngbDropdownItem *ngFor = "let color of colorList" 
+                    class="col-option" 
+                    [style.backgroundColor]="color.value.primary" 
+                    (click)="applyColor(color.value)">
+                </button>
+			</div>
+		</div>
         <!-- Using ngModel for two way data binding -->
         <input 
             type="text"
             [(ngModel)]="tname" 
             name="tname"
-            class="tasktext p-3 "
+            class="form-control tasktext p-3 "
             placeholder="to-do..."
         />
 
