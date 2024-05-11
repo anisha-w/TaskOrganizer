@@ -1,3 +1,5 @@
+//Shared service between task list and calendar for shared drag drop between them. 
+
 import { Injectable } from '@angular/core';
 import { TaskDetail } from './task-detail';
 import { Subject } from 'rxjs';
@@ -15,6 +17,9 @@ export class SharedService {
   private calendarTaskSource = new Subject<CalendarEvent>();
   public calendarTaskSource$ = this.calendarTaskSource.asObservable();
 
+  public allCalendarTasks = new Subject<TaskDetail[]>();
+  public allCalendarTasks$ = this.allCalendarTasks.asObservable();
+
   constructor() { }
 
   updateTaskArray(value: any) {
@@ -23,6 +28,10 @@ export class SharedService {
 
   updateCalendarArray(value: any) {
     this.calendarTaskSource.next(value);
+  }
+
+  getAllCalendarTask(){
+    return this.allCalendarTasks;
   }
 
   // public drop(event: CdkDragDrop<TaskDetail[]>) {
