@@ -23,7 +23,13 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskListSourceSub$ = this.sharedService.taskListSource$.subscribe(
-      (x: TaskDetail) => (this.taskArray = this.taskArray.filter((iEvent) => iEvent !== x))
+      (x:{value: TaskDetail, action:string}) => 
+        { 
+          switch(x.action){
+            case 'add' : this.taskArray = this.taskArray.filter((iEvent) => iEvent !== x.value); break;
+            case 'delete' : this.taskArray = this.taskArray.filter((iEvent) => iEvent !== x.value); break;
+          }
+        }
     );
   }
 
@@ -53,7 +59,8 @@ export class TaskListComponent implements OnInit {
     this.sharedService.updateCalendarArray(eventObj.event);
   }
 
-  handleEvent(taskObj : TaskDetail){
+  //delete task from list
+  handleDeleteEvent(taskObj : TaskDetail){
     this.taskArray = this.taskArray.filter((iEvent) => iEvent !== taskObj);
   }
 }

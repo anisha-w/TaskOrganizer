@@ -117,8 +117,8 @@ export class CalendarViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.calendarTaskSourceSub$ = this.sharedService.calendarTaskSource$.subscribe(
-      (x: CalendarEvent) => (this.events = this.events.filter((iEvent) => iEvent!== x)) // JSON.stringify(iEvent) !== JSON.stringify(x) 
+    this.calendarTaskSourceSub$ = this.sharedService.calendarTaskSource$.subscribe( //ANISHA: WHAT IS GOING ON?
+      (x: {value:any,action:string}) => (this.events = this.events.filter((iEvent) => iEvent!== x.value)) // JSON.stringify(iEvent) !== JSON.stringify(x) 
     );
   }
 

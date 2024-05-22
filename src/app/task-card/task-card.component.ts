@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { TaskDetail } from '../task-detail';
 import { CalendarEvent } from 'calendar-utils';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-task-card',
@@ -10,12 +11,13 @@ import { CalendarEvent } from 'calendar-utils';
 export class TaskCardComponent implements OnInit {
 
   @Input() taskDetailObj : TaskDetail = new TaskDetail();
-  @Output() deleteTaskDetailObj :  EventEmitter<TaskDetail> = new EventEmitter<TaskDetail>();
+  @Output() deleteTaskDetailEvent :  EventEmitter<TaskDetail> = new EventEmitter<TaskDetail>();
   
   
-  constructor() {
+  constructor(private sharedService: SharedService) {
     this.taskDetailObj.tname = "Start project Task Organizer"; //default ; gets overwritten by the input
    }
+
 
   ngOnInit(): void {
     this.taskDetailObj.actions = [
@@ -24,7 +26,7 @@ export class TaskCardComponent implements OnInit {
         a11yLabel: 'Edit',
 
         onClick: ({ event }: { event: CalendarEvent}): void => {
-          alert("Anisha Edit TODO ");
+          alert("Anisha Edit TODO "); //TODO 
           //this.deleteTaskDetailObj.emit(this.taskDetailObj);
 
         },
@@ -34,7 +36,8 @@ export class TaskCardComponent implements OnInit {
         a11yLabel: 'Delete',
         onClick: ({ event }: { event: CalendarEvent }): void => {
           alert("Anisha Delete Works ");
-          this.deleteTaskDetailObj.emit(this.taskDetailObj);
+          this.sharedService.deleteTaskFromCalendar(this.taskDetailObj);
+          this.deleteTaskDetailEvent.emit(this.taskDetailObj);
         },
       },
     ];
