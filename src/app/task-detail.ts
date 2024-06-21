@@ -2,12 +2,6 @@ import { CalendarEvent } from 'angular-calendar';
 import { EventColor, EventAction } from 'calendar-utils';
 import { COLOR_LIST } from './constants';
 
-// export interface TaskDetail extends CalendarEvent {
-//     //tname: string; //replaced by title from extending interface
-//     desc?: string; // Optional property
-// }
-
-
 export class TaskDetail implements CalendarEvent {
     id?: string | number | undefined;
     start: Date;
@@ -42,7 +36,7 @@ export class TaskDetail implements CalendarEvent {
             this.end = calendarEvent?.end;
             this.title = this.tname; 
             this.color =   calendarEvent?.color;
-            this.actions = calendarEvent?.actions;
+            // this.actions = calendarEvent?.actions;
             this.allDay = calendarEvent?.allDay;
             this.cssClass = calendarEvent?.cssClass;
             this.resizable = calendarEvent?.resizable;
@@ -55,11 +49,32 @@ export class TaskDetail implements CalendarEvent {
             this.title = this.tname; 
             this.start = new Date(); 
         }
+
+        //default values
         this.draggable = true;
         this.resizable = {
             beforeStart: true,
             afterEnd: true,
         }
+        this.actions = [{
+            label:  '<i class="fas fa-fw fa-pencil-alt"></i>', //'<button> Edit </button>',
+            a11yLabel: 'Edit',
+    
+            onClick: ({ event }: { event: CalendarEvent}): void => {
+              alert("Anisha Edit TODO "); //TODO 
+              //this.deleteTaskDetailObj.emit(this.taskDetailObj);
+    
+            },
+          },
+          {
+            label: '<i class="fas fa-fw fa-trash-alt"></i>',
+            a11yLabel: 'Delete',
+            onClick: ({ event }: { event: CalendarEvent }): void => {
+              alert("Anisha Delete Works ");
+              this.sharedService.deleteTaskFromCalendar(this.taskDetailObj);
+              this.deleteTaskDetailEvent.emit(this.taskDetailObj);
+            },
+          }];
     }
 
     // sync value of title and tname without renaming variables in entire code
