@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef } fr
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TaskDetail } from '../task-detail';
 import { SharedService } from '../shared.service';
+import { DataService } from '../data.service';
 
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Subject, Subscription } from 'rxjs';
@@ -112,7 +113,7 @@ export class CalendarViewComponent implements OnInit {
 
   calendarTaskSourceSub$: Subscription = new Subscription;
   
-  constructor(private sharedService: SharedService, private modal: NgbModal) { 
+  constructor(private sharedService: SharedService, private modal: NgbModal, private dataService : DataService) { 
     this.defaultT.tname = "defaultTask";
   }
 
@@ -149,6 +150,7 @@ export class CalendarViewComponent implements OnInit {
       task.end = newEnd;
       this.events = [...this.events , task ];
       this.sharedService.updateTaskArray(task);
+      this.dataService.addcalendarEvent(event);
     }
     else{
      
@@ -160,6 +162,7 @@ export class CalendarViewComponent implements OnInit {
           return iEvent;
         });
     }
+    
     //this.handleEvent('Dropped or resized', event);
 
   }

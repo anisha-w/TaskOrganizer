@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createEvent } from 'ics';
+import { createEvents } from 'ics';
 import { saveAs } from 'file-saver';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class IcsService {
   constructor() { }
 
   generateICSFile(eventsDetails: any[]) {
-    const events: string[] = [];
+    const events: any[] = [];
 
     eventsDetails.forEach(eventDetails => {
       const { start, end, title, desc } = eventDetails; //Anisha : TODO
@@ -24,17 +24,15 @@ export class IcsService {
         //organizer: organizer, // { name: 'Organizer Name', email: 'Organizer Email' }
         //attendees: attendees, // [{ name: 'Attendee Name', email: 'Attendee Email' }]
       };
+      events.push(event);
+    });
 
-      createEvent(event, (error, value) => {
-        if (error) {  
-          console.log(error);
-          return;
-        }
-        events.push(value);
-        if (events.length === eventsDetails.length) {
-          this.saveICSFile(events.join('\n'));
-        }
-      });
+    createEvents(events, (error,value) => {
+      if (error) {  
+        console.log(error);
+        return;
+      }
+      this.saveICSFile(value);
     });
   }
 
@@ -53,6 +51,9 @@ export class IcsService {
   }
 
   calculateDuration(startDate: Date, endDate: Date): { hours: number, minutes: number } {
+    if(endDate==null){
+      return {hours : 0,minutes : 30};
+    }
     const diffMs = endDate.getTime() - startDate.getTime();
     const diffMins = Math.floor(diffMs / 60000); // Convert milliseconds to minutes
     const hours = Math.floor(diffMins / 60);
